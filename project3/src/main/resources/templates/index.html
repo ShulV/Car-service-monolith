@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Автомастер</title>
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+
+  </head>
+  <body>
+    
+<header class="header-fixed">
+  <div class="collapse bg-white" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-dark">О нас</h4>
+          <p class="text-muted">Портал автомастерских "Автомастер" предстовляет собой бесплатный ресурс, где автомастерские регистрируются и подписываются на заявки по разным типам услуг (шиномонтаж, замена масла итд). Пользователи, в свою очередь, оставляют заявки и выбирают из предложений наиболее подходящий по различным условиям (цена, время, место расположения, отзывы).</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-dark">Мастерские</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-dark">Авторизация</a></li>
+            <li><a href="#" class="text-dark">Регистрация</a></li>
+            <li><a href="#" class="text-dark">Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-white bg-white">
+    <div class="container">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+		<img src="../assets/images/car.png" width="50" height="50" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24">
+        <strong>Автомастер</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation" color="dark">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="background-image: url(../assets/images/wheel.jpg);">
+        <div class="container">
+          <div class="carousel-caption text-slide">
+            <h1>Шиномонтаж</h1>
+            <p>Большой выбор шиномонтажных мастерских по разным ценам</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: url(../assets/images/engine.jpg);">
+
+        <div class="container">
+          <div class="carousel-caption text-midle">
+            <h1>Ремонт ДВС</h1>
+            <p>Найдите для себя лучший сервис ремонта ДВС из большого списка компаний</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: url(../assets/images/kuzov.jpg);">
+        <div class="container">
+          <div class="carousel-caption text-slide">
+            <h1>Кузовной ремонт и многое другое</h1>
+            <p>По местоположению и отзывам найдите лучшую для себя мастерскую по кузовному ремонту и другим видам работ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="album py-5 bg-dark">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="../assets/images/kuzov.jpg" width="100%" height="225">
+            <div class="card-body">
+              <h4>Кузовной ремонт</h4>
+              <p class="card-text">Компании по ремонту кузова</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="/list-services/6" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                <small class="text-muted">9 мастерских</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="../assets/images/engine.jpg" width="100%" height="225">
+            <div class="card-body">
+              <h4>Ремонт ДВС</h4>
+              <p class="card-text">Компаниии по ремонту ДВС</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="/list-services/1" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                <small class="text-muted">5 мастерских</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="../assets/images/wheel.jpg" width="100%" height="225">
+
+            <div class="card-body">
+              <h4>Шиномонтаж</h4>
+              <p class="card-text">Компании по шиномонтажу</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="/list-services/2" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                <small class="text-muted">15 мастерских</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="../assets/images/akp.jpg" width="100%" height="225">
+            <div class="card-body">
+              <h4>Ремонт АКП</h4>
+              <p class="card-text">Комании по ремонту коробок передач</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="/list-services/3" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                <small class="text-muted">3 мастерские</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="../assets/images/hod.jpg" width="100%" height="225">
+
+            <div class="card-body">
+              <h4>Ходовая часть</h4>
+              <p class="card-text">Компании по ремонту ходовой части</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="/list-services/4" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                <small class="text-muted">8 мастерских</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="../assets/images/elek.jpg" width="100%" height="225">
+            <div class="card-body">
+              <h4>Электрика</h4>
+              <p class="card-text">Компании по ремонту электрики</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="/list-services/5" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                <small class="text-muted">4 мастерские</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="../assets/images/malyar.jpg" width="100%" height="225">
+            <div class="card-body">
+              <h4>Малярные работы</h4>
+              <p class="card-text">Компании по малярным работам</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="/list-services/7" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                <small class="text-muted">10 мастерских</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="../assets/images/salon.jpg" width="100%" height="225">
+            <div class="card-body">
+              <h4>Отделка салона</h4>
+              <p class="card-text">Компании по отделке салона</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="/list-services/8" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                <small class="text-muted">2 мастерские</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="../assets/images/steklo.jpg" width="100%" height="225">
+            <div class="card-body">
+              <h4>Ремонт стекол</h4>
+              <p class="card-text">Компании по ремонту стекол</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="/list-services/9" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                <small class="text-muted">3 мастерские</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-muted py-4 bottom_style">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Вверх</a>
+    </p>
+    <p class="mb-1">2022 Автомастер</p>
+  </div>
+</footer>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

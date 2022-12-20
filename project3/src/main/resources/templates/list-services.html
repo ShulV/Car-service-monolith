@@ -1,0 +1,101 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Автомастер</title>
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/main.css">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+    </style>
+
+</head>
+<body>
+
+<header class="header-fixed">
+    <div class="collapse bg-white" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-dark">О нас</h4>
+                    <p class="text-muted">Портал автомастерских "Автомастер" предстовляет собой бесплатный ресурс, где автомастерские регистрируются и подписываются на заявки по разным типам услуг (шиномонтаж, замена масла итд). Пользователи, в свою очередь, оставляют заявки и выбирают из предложений наиболее подходящий по различным условиям (цена, время, место расположения, отзывы).</p>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4 class="text-dark">Мастерские</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-dark">Авторизация</a></li>
+                        <li><a href="#" class="text-dark">Регистрация</a></li>
+                        <li><a href="#" class="text-dark">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-white bg-white">
+        <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <img src="../assets/images/car.png" width="50" height="50" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24">
+                <strong>Автомастер</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation" color="dark">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="section py-5 bg-dark">
+        <div class="container">
+            <h2>Список автомастерских</h2>
+            <div class="row">
+                <div th:each="servicePrice : ${servicePrices}" class="events-list list-service__row col-md-12">
+                    <a th:href="@{/car-service/{id}(id=${servicePrice.getService().getId()})}" class="list-service__sub-row">
+
+                        <!--                            <td>-->
+                        <!--                                <div class="event-color">-->
+                        <!--                                    <div class="event-number">1</div>-->
+                        <!--                                </div>-->
+                        <!--                            </td>-->
+                        <div th:text="${servicePrice.getService().getName()}">Название сервиса из БД</div>
+                        <div th:text="${servicePrice.getService().getAddress()}">Адрес из БД</div>
+                        <div>Рейтинг из БД</div>
+                        <div th:text="${servicePrice.getServiceType().getName()}">Адрес из БД</div>
+                        <div class="event-price hidden-xs">
+                            <span  th:text="${servicePrice.getPrice()}">50</span> рублей</div>
+                    </a>
+                    <div><a href="#" class="btn btn-grey btn-sm event-more">Записаться</a></div>
+                </div>
+            </div>
+            <div class="py-4">
+                <a href="#" class="btn btn-grey btn-sm event-more redac">Редактировать</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="text-muted py-4 bottom_style">
+    <div class="container">
+        <p class="float-end mb-1">
+            <a href="#">Вверх</a>
+        </p>
+        <p class="mb-1">2022 Автомастер</p>
+    </div>
+</footer>
+
+
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
