@@ -40,19 +40,31 @@ body {
   border-bottom-color: #fff;
 }
 
-.comment-block {
+.review {
 	display: flex;
 	flex-direction: column;
+    background-color:#333;
+    padding: 20px;
+    margin-bottom: 5px;
 }
 
-.comment-block__item {
-	background-color:#333;
-	padding: 20px;
-  margin-bottom: 5px;
+.review > * {
+    margin-bottom: 10px;
 }
 
-.comment-block__item-name {
+.review__item-name {
 	font-weight: 700;
+}
+
+.review__item-mark-stars {
+    height: 30px;
+    width: 150px;
+    background-image: url('../images/rating/stars.png');
+    background-size: 100%;
+}
+
+.review__creating-date {
+    text-align: right;
 }
 
 .service-row-btn {
