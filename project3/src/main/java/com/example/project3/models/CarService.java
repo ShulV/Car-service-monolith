@@ -34,6 +34,9 @@ public class CarService {
     @OneToMany(mappedBy = "carService", cascade = CascadeType.PERSIST)
     private List<Review> serviceReviews;
 
+    @OneToMany(mappedBy = "carService", cascade = CascadeType.PERSIST)
+    private List<RepairRequest> repairRequests;
+
     public CarService(Integer id, String name, String email, String password, String address, String phone) {
         this.id = id;
         this.name = name;
@@ -114,6 +117,14 @@ public class CarService {
             this.serviceReviews = new ArrayList<>();
         }
         this.serviceReviews.add(serviceReview);
+    }
+
+    public List<RepairRequest> getRepairRequests() {
+        return repairRequests;
+    }
+
+    public void setRepairRequests(List<RepairRequest> repairRequests) {
+        this.repairRequests = repairRequests;
     }
 
     @Override

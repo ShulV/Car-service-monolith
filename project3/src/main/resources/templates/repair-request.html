@@ -1,0 +1,98 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <title>Автомастер</title>
+    
+
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/index.css">
+
+
+    <style>
+
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <link href="../assets/css/servis.css" rel="stylesheet">
+  </head>
+  <body class="text-white bg-dark">
+    <header class="header-fixed">
+      <div class="collapse bg-white" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-dark">О нас</h4>
+              <p class="text-muted">Портал автомастерских "Автомастер" предстовляет собой бесплатный ресурс, где автомастерские регистрируются и подписываются на заявки по разным типам услуг (шиномонтаж, замена масла итд). Пользователи, в свою очередь, оставляют заявки и выбирают из предложений наиболее подходящий по различным условиям (цена, время, место расположения, отзывы).</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-dark">Мастерские</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-dark">Авторизация</a></li>
+                <li><a href="#" class="text-dark">Регистрация</a></li>
+                <li><a href="#" class="text-dark">Контакты</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-white bg-white">
+        <div class="container">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+        <img src="../assets/images/car.png" width="50" height="50" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24">
+            <strong>Автомастер</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation" color="dark">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+<div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+
+  <main class="px-3">
+<!--    -->
+    <h2>Добавление заявки</h2>
+    <form th:method="POST" th:action="@{/add-repair-request/${serviceId}/${serviceTypeId}}" th:object="${repairRequest}">
+<!--      -->
+<!--      <div style="color:red" th:if="${#fields.hasErrors('authorName')}" th:errors="*{authorName}">authorName Error</div>-->
+<!--      <div>-->
+<!--        <label for="authorName">Имя:</label>-->
+<!--        <input type="text" id="authorName" name="authorName" class="form-control">-->
+<!--      </div>-->
+<!--&lt;!&ndash;      &ndash;&gt;-->
+<!--      <div style="color:red" th:if="${#fields.hasErrors('mark')}" th:errors="*{mark}">mark Error</div>-->
+<!--      <div>-->
+<!--        <label for="mark">Оценка:</label>-->
+<!--        <input type="number" min="1" max="5" id="mark" name="mark" class="form-control">-->
+<!--      </div>-->
+<!--&lt;!&ndash;      &ndash;&gt;-->
+<!--      <div style="color:red" th:if="${#fields.hasErrors('text')}" th:errors="*{mark}">text Error</div>-->
+<!--      <div>-->
+<!--        <label for="text">Отзыв:</label>-->
+<!--        <textarea id="text" name="text" class="form-control"></textarea>-->
+<!--      </div>-->
+<!--&lt;!&ndash;      &ndash;&gt;-->
+<!--      <input type="submit" value="Добавить" class="btn btn-primary" style="margin-top: 30px">-->
+    </form>
+
+  </main>
+
+  <footer class="mt-auto text-white-50 text-center">
+    <p>Автомастер 2022</p>
+  </footer>
+</div>
+
+
+<script src="../assets/js/bootstrap.bundle.min.js" defer></script>
+  </body>
+</html>

@@ -19,6 +19,9 @@ public class ServiceType {
     @OneToMany(mappedBy = "serviceType", fetch = FetchType.EAGER)
     private List<ServicePrice> servicePrices;
 
+    @OneToMany(mappedBy = "serviceType", fetch = FetchType.EAGER)
+    private List<RepairRequest> repairRequests;
+
     public ServiceType() {}
 
     public ServiceType(Integer id, String name) {
@@ -48,6 +51,14 @@ public class ServiceType {
 
     public void setServicePrices(List<ServicePrice> servicePrices) {
         this.servicePrices = servicePrices;
+    }
+
+    public List<RepairRequest> getRepairRequests() {
+        return repairRequests;
+    }
+
+    public void setRepairRequests(List<RepairRequest> repairRequests) {
+        this.repairRequests = repairRequests;
     }
 
     @Override
