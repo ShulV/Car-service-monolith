@@ -92,3 +92,39 @@ body {
 .font-size-20 {
   font-size: 20px;
 }
+
+.repair-request-heading {
+  color: #CFCFCF;
+}
+
+.repair-request-row {
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-left: 3px solid white;
+  transition: all 1s ease-in;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: #CFCFCF;
+  font-size: 1.1em;
+  text-decoration: none;
+
+}
+
+.repair-request-row-data:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #0d6efd;
+  transition: all 0.5s ease-in-out;
+  color: #CFCFCF;
+}
+
+.repair-request-row-data {
+  margin-top: 10px;
+}
+
+.repair-request-row-header {
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.3);
+  border-width: 0;
+}

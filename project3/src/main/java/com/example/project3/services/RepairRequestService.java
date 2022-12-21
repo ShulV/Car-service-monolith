@@ -6,11 +6,13 @@ import com.example.project3.models.RepairRequest;
 import com.example.project3.models.CarServiceType;
 import com.example.project3.repositories.RepairRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,5 +50,9 @@ public class RepairRequestService {
 
             repairRequestRepository.save(repairRequest);
         }
+    }
+
+    public List<RepairRequest> getAll() {
+        return repairRequestRepository.findAll(Sort.by(Sort.Direction.DESC, "dateRequest"));
     }
 }

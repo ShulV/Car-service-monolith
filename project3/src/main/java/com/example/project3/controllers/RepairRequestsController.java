@@ -22,7 +22,11 @@ public class RepairRequestsController {
     }
 
     //получение страницы со всеми заявками
-//    @GetMapping("")
+    @GetMapping("/all")
+    public String getAllRepairRequestPage(Model model) {
+        model.addAttribute("repairRequests", repairRequestService.getAll());
+        return "repair-request-list";
+    }
 
     //получение страницы создания заявки
     @GetMapping("/add/{carServiceId}/{carServiceTypeId}")
