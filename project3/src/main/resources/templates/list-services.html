@@ -61,14 +61,8 @@
             <h2>Список автомастерских</h2>
             <div class="row">
                 <div th:each="servicePrice : ${servicePrices}" class="events-list list-service__row col-md-12">
-                    <a th:href="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${servicePrice.getService().getId()})}"
+                    <a th:href="@{/car-service/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${servicePrice.getService().getId()})}"
                        class="list-service__sub-row">
-
-                        <!--                            <td>-->
-                        <!--                                <div class="event-color">-->
-                        <!--                                    <div class="event-number">1</div>-->
-                        <!--                                </div>-->
-                        <!--                            </td>-->
                         <div th:text="${servicePrice.getService().getName()}">Название сервиса из БД</div>
                         <div th:text="${servicePrice.getService().getAddress()}">Адрес из БД</div>
                         <div>Рейтинг из БД</div>

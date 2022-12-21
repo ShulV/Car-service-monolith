@@ -32,12 +32,6 @@ public class MastersController {
         this.repairRequestService = repairRequestService;
     }
 
-    //получение главной страницы
-    @GetMapping()
-        public String getMainPage() {
-            return "index";
-        }
-
     //получение списка автомастерских
     @GetMapping("/list-services/{serviceTypeId}")
     public String getListServicesPage(@PathVariable Integer serviceTypeId, Model model) {
@@ -47,7 +41,6 @@ public class MastersController {
             model.addAttribute("servicePrices", servicePriceList);
             model.addAttribute("serviceTypeId", serviceTypeId);
         }
-
         return "list-services";
     }
 
@@ -61,9 +54,6 @@ public class MastersController {
 
 
         if(carService.isPresent()) {
-//            Review review = new Review();
-////            review.setCarService(carService.get());
-//            model.addAttribute("review", review);
             model.addAttribute("carService", carService.get());
         }
         return "service";
@@ -81,32 +71,7 @@ public class MastersController {
         return "redirect:/car-service/" + serviceTypeId + '/' + serviceId;
     }
 
-    //получение страницы создания заявки
-    @GetMapping("/add-repair-request/{serviceId}/{serviceTypeId}")
-    public String getPageCreatingRepairRequest(@PathVariable("serviceId") Integer serviceId,
-                                               @PathVariable("serviceTypeId") Integer serviceTypeId,
-                                               Model model) {
-//        @ModelAttribute("repairRequest") RepairRequest repairRequest
-        RepairRequest repairRequest = new RepairRequest();
-        repairRequest.setServiceType(serviceServiceType.getServiceTypeById(serviceTypeId));
-        model.addAttribute("repairRequest", repairRequest);
-        return "repair-request";
 
-    }
-
-    @PostMapping("/add-repair-request/{serviceId}/{serviceTypeId}")
-    public String CreateRepairRequest(@PathVariable("serviceId") Integer serviceId,
-                                      @PathVariable("serviceTypeId") Integer serviceTypeId,
-                                      @ModelAttribute("repairRequest") RepairRequest repairRequest,
-                                      BindingResult bindingResult) {
-
-        if(bindingResult.hasErrors()) {
-            return "service";
-        }
-
-        repairRequestService.saveRepairRequest(serviceId, serviceTypeId, repairRequest);
-        return "redirect:/car-service/" + serviceTypeId + '/' + serviceId;
-    }
 
 
 }
