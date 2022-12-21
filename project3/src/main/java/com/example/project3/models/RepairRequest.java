@@ -16,10 +16,12 @@ public class RepairRequest {
     private Integer id;
 
     @Column(name = "author_name")
-    String name;
+    String authorName;
 
     @Column(name = "phone")
     String phone;
+
+
 
     @Column(name = "date_request")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -31,6 +33,9 @@ public class RepairRequest {
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp dateTimeWork;
 
+    @Transient
+    private String dateTimeWorkFromInput;
+
     @ManyToOne
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     private ServiceType serviceType;
@@ -41,9 +46,9 @@ public class RepairRequest {
 
     public RepairRequest() { }
 
-    public RepairRequest(Integer id, String name, String phone, LocalDate dateRequest, Timestamp dateTimeWork) {
+    public RepairRequest(Integer id, String authorName, String phone, LocalDate dateRequest, Timestamp dateTimeWork) {
         this.id = id;
-        this.name = name;
+        this.authorName = authorName;
         this.phone = phone;
         this.dateRequest = dateRequest;
         this.dateTimeWork = dateTimeWork;
@@ -55,14 +60,6 @@ public class RepairRequest {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPhone() {
@@ -105,11 +102,27 @@ public class RepairRequest {
         this.carService = carService;
     }
 
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public String getDateTimeWorkFromInput() {
+        return dateTimeWorkFromInput;
+    }
+
+    public void setDateTimeWorkFromInput(String dateTimeWorkFromInput) {
+        this.dateTimeWorkFromInput = dateTimeWorkFromInput;
+    }
+
     @Override
     public String toString() {
         return "RepairRequest{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", authorName='" + authorName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", dateRequest=" + dateRequest +
                 ", dateTimeWork=" + dateTimeWork +

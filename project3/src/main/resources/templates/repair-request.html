@@ -5,10 +5,10 @@
     <title>Автомастер</title>
     
 
-<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="../assets/css/main.css">
-<link rel="stylesheet" href="../assets/css/index.css">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="stylesheet" href="../../assets/css/index.css">
 
 
     <style>
@@ -22,7 +22,7 @@
     </style>
 
     
-    <link href="../assets/css/servis.css" rel="stylesheet">
+    <link href="../../assets/css/servis.css" rel="stylesheet">
   </head>
   <body class="text-white bg-dark">
     <header class="header-fixed">
@@ -47,7 +47,7 @@
       <div class="navbar navbar-white bg-white">
         <div class="container">
           <a href="#" class="navbar-brand d-flex align-items-center">
-        <img src="../assets/images/car.png" width="50" height="50" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24">
+        <img src="../../assets/images/car.png" width="50" height="50" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24">
             <strong>Автомастер</strong>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation" color="dark">
@@ -61,28 +61,30 @@
 
   <main class="px-3">
 <!--    -->
-    <h2>Добавление заявки</h2>
-    <form th:method="POST" th:action="@{/add-repair-request/${serviceId}/${serviceTypeId}}" th:object="${repairRequest}">
-<!--      -->
-<!--      <div style="color:red" th:if="${#fields.hasErrors('authorName')}" th:errors="*{authorName}">authorName Error</div>-->
-<!--      <div>-->
-<!--        <label for="authorName">Имя:</label>-->
-<!--        <input type="text" id="authorName" name="authorName" class="form-control">-->
-<!--      </div>-->
-<!--&lt;!&ndash;      &ndash;&gt;-->
-<!--      <div style="color:red" th:if="${#fields.hasErrors('mark')}" th:errors="*{mark}">mark Error</div>-->
-<!--      <div>-->
-<!--        <label for="mark">Оценка:</label>-->
-<!--        <input type="number" min="1" max="5" id="mark" name="mark" class="form-control">-->
-<!--      </div>-->
-<!--&lt;!&ndash;      &ndash;&gt;-->
+    <h2>Добавление заявки для типа ремонта: <span th:text="${repairRequest.getServiceType().getName()}"></span></h2>
+    <form th:method="POST" th:action="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${serviceId})}"
+          th:object="${repairRequest}">
+      <div style="color:red" th:if="${#fields.hasErrors('authorName')}" th:errors="*{authorName}">authorName Error</div>
+      <div>
+        <label for="authorName">Имя:</label>
+        <input type="text" id="authorName" name="authorName" class="form-control">
+      </div>
+      <!--      -->
+      <div style="color:red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</div>
+      <div>
+        <label for="phone">Телефон:</label>
+        <input type="tel" id="phone" name="phone" class="form-control">
+      </div>
+      <!--      -->
 <!--      <div style="color:red" th:if="${#fields.hasErrors('text')}" th:errors="*{mark}">text Error</div>-->
-<!--      <div>-->
-<!--        <label for="text">Отзыв:</label>-->
-<!--        <textarea id="text" name="text" class="form-control"></textarea>-->
-<!--      </div>-->
-<!--&lt;!&ndash;      &ndash;&gt;-->
-<!--      <input type="submit" value="Добавить" class="btn btn-primary" style="margin-top: 30px">-->
+      <div>
+        <label for="dateTimeWorkFromInput">Дата/время записи:</label>
+        <input type="datetime-local" id="dateTimeWorkFromInput" name="dateTimeWorkFromInput" class="form-control">
+      </div>
+
+      <!--      -->
+      <input type="submit" value="Добавить" class="btn btn-primary" style="margin-top: 30px">
+
     </form>
 
   </main>
@@ -93,6 +95,6 @@
 </div>
 
 
-<script src="../assets/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/bootstrap.bundle.min.js" defer></script>
   </body>
 </html>

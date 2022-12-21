@@ -28,6 +28,9 @@ public class CarService {
     @Column(name = "phone")
     String phone;
 
+    @Transient
+    private Double averageRating;
+
     @OneToMany(mappedBy = "carService")
     private List<ServicePrice> servicePrices;
 
@@ -125,6 +128,14 @@ public class CarService {
 
     public void setRepairRequests(List<RepairRequest> repairRequests) {
         this.repairRequests = repairRequests;
+    }
+
+    public Double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(Double averageRating) {
+        this.averageRating = averageRating;
     }
 
     @Override

@@ -67,7 +67,7 @@
     <div class="font-size-20">Адрес: <span th:text="${carService.getAddress()}">Адрес</span></div>
     <p>Рейтинг</p>
     <div class="carService-row-btn">
-      <a href="#" class="btn btn-grey btn-sm event-more btn-margin-left">Записаться</a>
+      <a th:href="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${serviceId})}" class="btn btn-primary event-more btn-margin-left">Записаться</a>
     </div>
 <!--    -->
     <h2>Отзывы</h2>
@@ -82,7 +82,7 @@
     </div>
 <!--    -->
     <h2>Добавить отзыв:</h2>
-    <form th:method="POST" th:action="@{/add-review/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${carService.getId()})}"
+    <form th:method="POST" th:action="@{/add-review/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${serviceId})}"
           th:object="${review}">
 <!--      -->
       <div style="color:red" th:if="${#fields.hasErrors('authorName')}" th:errors="*{authorName}">authorName Error</div>

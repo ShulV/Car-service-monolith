@@ -61,7 +61,7 @@
             <h2>Список автомастерских</h2>
             <div class="row">
                 <div th:each="servicePrice : ${servicePrices}" class="events-list list-service__row col-md-12">
-                    <a th:href="@{/car-service/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${servicePrice.getService().getId()})}"
+                    <a th:href="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${servicePrice.getService().getId()})}"
                        class="list-service__sub-row">
 
                         <!--                            <td>-->
@@ -76,11 +76,13 @@
                         <div class="event-price hidden-xs">
                             <span  th:text="${servicePrice.getPrice()}">50</span> рублей</div>
                     </a>
-                    <div><a href="@{/add-repair-request/${}/${}}" class="btn btn-grey btn-sm event-more">Записаться</a></div>
+                    <div>
+                        <a th:href="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${servicePrice.getService().getId()})}"
+                           class="btn btn-primary event-more">Записаться</a></div>
                 </div>
             </div>
             <div class="py-4">
-                <a href="#" class="btn btn-grey btn-sm event-more redac">Редактировать</a>
+                <a href="#" class="btn btn-primary event-more redac">Редактировать</a>
             </div>
         </div>
     </div>
