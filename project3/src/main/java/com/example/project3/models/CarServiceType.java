@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "type")
-public class ServiceType {
+public class CarServiceType {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,15 +16,15 @@ public class ServiceType {
     @Column(name="name")
     private String name;
 
-    @OneToMany(mappedBy = "serviceType", fetch = FetchType.EAGER)
-    private List<ServicePrice> servicePrices;
+    @OneToMany(mappedBy = "carServiceType", fetch = FetchType.EAGER)
+    private List<CarServicePrice> carServicePrices;
 
-    @OneToMany(mappedBy = "serviceType", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "carServiceType", fetch = FetchType.EAGER)
     private List<RepairRequest> repairRequests;
 
-    public ServiceType() {}
+    public CarServiceType() {}
 
-    public ServiceType(Integer id, String name) {
+    public CarServiceType(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -45,12 +45,12 @@ public class ServiceType {
         this.id = id;
     }
 
-    public List<ServicePrice> getServicePrices() {
-        return servicePrices;
+    public List<CarServicePrice> getServicePrices() {
+        return carServicePrices;
     }
 
-    public void setServicePrices(List<ServicePrice> servicePrices) {
-        this.servicePrices = servicePrices;
+    public void setServicePrices(List<CarServicePrice> carServicePrices) {
+        this.carServicePrices = carServicePrices;
     }
 
     public List<RepairRequest> getRepairRequests() {
@@ -63,7 +63,7 @@ public class ServiceType {
 
     @Override
     public String toString() {
-        return "ServiceType{" +
+        return "CarServiceType{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

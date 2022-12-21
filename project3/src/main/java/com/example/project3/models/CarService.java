@@ -32,10 +32,10 @@ public class CarService {
     private Double averageRating;
 
     @OneToMany(mappedBy = "carService")
-    private List<ServicePrice> servicePrices;
+    private List<CarServicePrice> carServicePrices;
 
     @OneToMany(mappedBy = "carService", cascade = CascadeType.PERSIST)
-    private List<Review> serviceReviews;
+    private List<Review> reviews;
 
     @OneToMany(mappedBy = "carService", cascade = CascadeType.PERSIST)
     private List<RepairRequest> repairRequests;
@@ -99,27 +99,27 @@ public class CarService {
         this.phone = phone;
     }
 
-    public List<ServicePrice> getServicePrices() {
-        return servicePrices;
+    public List<CarServicePrice> getCarServicePrices() {
+        return carServicePrices;
     }
 
-    public void setServicePrices(List<ServicePrice> servicePrices) {
-        this.servicePrices = servicePrices;
+    public void setCarServicePrices(List<CarServicePrice> carServicePrices) {
+        this.carServicePrices = carServicePrices;
     }
 
-    public List<Review> getServiceReviews() {
-        return serviceReviews;
+    public List<Review> getReviews() {
+        return reviews;
     }
 
-    public void setServiceReviews(List<Review> serviceReviews) {
-        this.serviceReviews = serviceReviews;
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
-    public void addServiceReview(Review serviceReview) {
-        if(this.serviceReviews == null) {
-            this.serviceReviews = new ArrayList<>();
+    public void addReview(Review review) {
+        if(this.reviews == null) {
+            this.reviews = new ArrayList<>();
         }
-        this.serviceReviews.add(serviceReview);
+        this.reviews.add(review);
     }
 
     public List<RepairRequest> getRepairRequests() {
@@ -140,7 +140,7 @@ public class CarService {
 
     @Override
     public String toString() {
-        return "Service{" +
+        return "CarService{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +

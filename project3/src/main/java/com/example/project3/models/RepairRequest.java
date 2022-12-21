@@ -38,7 +38,7 @@ public class RepairRequest {
 
     @ManyToOne
     @JoinColumn(name = "type_id", referencedColumnName = "id")
-    private ServiceType serviceType;
+    private CarServiceType carServiceType;
 
     @ManyToOne
     @JoinColumn(name = "master_id", referencedColumnName = "id")
@@ -86,12 +86,12 @@ public class RepairRequest {
         this.dateTimeWork = dateTimeWork;
     }
 
-    public ServiceType getServiceType() {
-        return serviceType;
+    public CarServiceType getServiceType() {
+        return carServiceType;
     }
 
-    public void setServiceType(ServiceType serviceType) {
-        this.serviceType = serviceType;
+    public void setServiceType(CarServiceType carServiceType) {
+        this.carServiceType = carServiceType;
     }
 
     public CarService getCarService() {

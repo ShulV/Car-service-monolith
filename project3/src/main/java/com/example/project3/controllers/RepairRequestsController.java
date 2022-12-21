@@ -2,7 +2,7 @@ package com.example.project3.controllers;
 
 import com.example.project3.models.RepairRequest;
 import com.example.project3.services.RepairRequestService;
-import com.example.project3.services.ServiceServiceType;
+import com.example.project3.services.ServiceCarServiceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,31 +14,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class RepairRequestsController {
-    private final ServiceServiceType serviceServiceType;
+    private final ServiceCarServiceType serviceCarServiceType;
     private final RepairRequestService repairRequestService;
 
     @Autowired
-    public RepairRequestsController(ServiceServiceType serviceServiceType, RepairRequestService repairRequestService) {
-        this.serviceServiceType = serviceServiceType;
+    public RepairRequestsController(ServiceCarServiceType serviceCarServiceType, RepairRequestService repairRequestService) {
+        this.serviceCarServiceType = serviceCarServiceType;
         this.repairRequestService = repairRequestService;
     }
 
     //получение страницы создания заявки
-    @GetMapping("/add-repair-request/{serviceId}/{serviceTypeId}")
-    public String getPageCreatingRepairRequest(@PathVariable("serviceId") Integer serviceId,
-                                               @PathVariable("serviceTypeId") Integer serviceTypeId,
+    @GetMapping("/add-repair-request/{carServiceId}/{carServiceTypeId}")
+    public String getPageCreatingRepairRequest(@PathVariable("carServiceId") Integer carServiceId,
+                                               @PathVariable("carServiceTypeId") Integer carServiceTypeId,
                                                Model model) {
 //        @ModelAttribute("repairRequest") RepairRequest repairRequest
         RepairRequest repairRequest = new RepairRequest();
-        repairRequest.setServiceType(serviceServiceType.getServiceTypeById(serviceTypeId));
+        repairRequest.setServiceType(serviceCarServiceType.getServiceTypeById(carServiceTypeId));
         model.addAttribute("repairRequest", repairRequest);
         return "repair-request";
 
     }
 
-    @PostMapping("/add-repair-request/{serviceId}/{serviceTypeId}")
-    public String CreateRepairRequest(@PathVariable("serviceId") Integer serviceId,
-                                      @PathVariable("serviceTypeId") Integer serviceTypeId,
+    @PostMapping("/add-repair-request/{carServiceId}/{carServiceTypeId}")
+    public String CreateRepairRequest(@PathVariable("carServiceId") Integer carServiceId,
+                                      @PathVariable("carServiceTypeId") Integer carServiceTypeId,
                                       @ModelAttribute("repairRequest") RepairRequest repairRequest,
                                       BindingResult bindingResult) {
 
@@ -46,7 +46,7 @@ public class RepairRequestsController {
             return "service";
         }
 
-        repairRequestService.saveRepairRequest(serviceId, serviceTypeId, repairRequest);
-        return "redirect:/car-service/" + serviceTypeId + '/' + serviceId;
+        repairRequestService.saveRepairRequest(carServiceId, carServiceTypeId, repairRequest);
+        return "redirect:/car-service/" + carServiceTypeId + '/' + carServiceId;
     }
 }

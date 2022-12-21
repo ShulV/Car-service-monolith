@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "master_type")
-public class ServicePrice {
+public class CarServicePrice {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,25 +13,25 @@ public class ServicePrice {
     @Column(name="price")
     private Integer price;
 
-    public ServiceType getServiceType() {
-        return serviceType;
+    public CarServiceType getServiceType() {
+        return carServiceType;
     }
 
-    public void setServiceType(ServiceType serviceType) {
-        this.serviceType = serviceType;
+    public void setServiceType(CarServiceType carServiceType) {
+        this.carServiceType = carServiceType;
     }
 
     @ManyToOne
     @JoinColumn(name = "type_id", referencedColumnName = "id")
-    private ServiceType serviceType;
+    private CarServiceType carServiceType;
 
     @ManyToOne
     @JoinColumn(name = "master_id", referencedColumnName = "id")
     private CarService carService;
 
-    public ServicePrice() {}
+    public CarServicePrice() {}
 
-    public ServicePrice(Integer id, Integer price) {
+    public CarServicePrice(Integer id, Integer price) {
         this.id = id;
         this.price = price;
     }
@@ -52,14 +52,6 @@ public class ServicePrice {
         this.price = price;
     }
 
-    public CarService getService() {
-        return carService;
-    }
-
-    public void setService(CarService carService) {
-        this.carService = carService;
-    }
-
     public CarService getCarService() {
         return carService;
     }
@@ -70,7 +62,7 @@ public class ServicePrice {
 
     @Override
     public String toString() {
-        return "ServicePrice{" +
+        return "CarServicePrice{" +
                 "id=" + id +
                 ", price=" + price +
                 '}';

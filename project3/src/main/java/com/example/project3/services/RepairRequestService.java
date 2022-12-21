@@ -3,7 +3,7 @@ package com.example.project3.services;
 import org.apache.commons.lang3.StringUtils;
 import com.example.project3.models.CarService;
 import com.example.project3.models.RepairRequest;
-import com.example.project3.models.ServiceType;
+import com.example.project3.models.CarServiceType;
 import com.example.project3.repositories.RepairRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,32 +11,31 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Optional;
 
 @Service
 @Transactional(readOnly=true)
 public class RepairRequestService {
 
-    private final ServiceService serviceService;
-    private final ServiceServiceType serviceServiceType;
+    private final ServiceCarService serviceCarService;
+    private final ServiceCarServiceType serviceCarServiceType;
     private final RepairRequestRepository repairRequestRepository;
 
     @Autowired
-    public RepairRequestService(ServiceService serviceService, ServiceServiceType serviceServiceType, RepairRequestRepository repairRequestRepository) {
-        this.serviceService = serviceService;
-        this.serviceServiceType = serviceServiceType;
+    public RepairRequestService(ServiceCarService serviceCarService, ServiceCarServiceType serviceCarServiceType, RepairRequestRepository repairRequestRepository) {
+        this.serviceCarService = serviceCarService;
+        this.serviceCarServiceType = serviceCarServiceType;
         this.repairRequestRepository = repairRequestRepository;
     }
 
     @Transactional
     public void saveRepairRequest(Integer serviceId, Integer serviceTypeId, RepairRequest repairRequest) {
-        Optional<CarService> carService = serviceService.getServiceById(serviceId);
-        ServiceType serviceType = serviceServiceType.getServiceTypeById(serviceTypeId);
+        Optional<CarService> carService = serviceCarService.getServiceById(serviceId);
+        CarServiceType carServiceType = serviceCarServiceType.getServiceTypeById(serviceTypeId);
 
-        if(carService.isPresent() && serviceType != null) {
+        if(carService.isPresent() && carServiceType != null) {
             repairRequest.setCarService(carService.get());
-            repairRequest.setServiceType(serviceType);
+            repairRequest.setServiceType(carServiceType);
 
             repairRequest.setDateRequest(LocalDate.now());
 

@@ -1,7 +1,6 @@
 package com.example.project3.services;
 
 import com.example.project3.models.CarService;
-import com.example.project3.models.RepairRequest;
 import com.example.project3.models.Review;
 import com.example.project3.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +14,18 @@ import java.time.LocalDate;
 public class ReviewService {
 
     private final ReviewRepository reviewRepository;
-    private final ServiceService serviceService;
+    private final ServiceCarService serviceCarService;
 
     @Autowired
-    public ReviewService(ReviewRepository reviewRepository, ServiceService serviceService) {
+    public ReviewService(ReviewRepository reviewRepository, ServiceCarService serviceCarService) {
         this.reviewRepository = reviewRepository;
-        this.serviceService = serviceService;
+        this.serviceCarService = serviceCarService;
     }
 
     @Transactional
     public void saveReviewForCarService(Integer id, Review review) {
 
-        CarService carServiceForReview = serviceService.getServiceById(id).get();
+        CarService carServiceForReview = serviceCarService.getServiceById(id).get();
         review.setCarService(carServiceForReview);
         review.setDate(LocalDate.now());
 

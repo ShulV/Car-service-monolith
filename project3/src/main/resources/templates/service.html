@@ -58,20 +58,20 @@
   <main class="px-3">
     <h2 th:text="${carService.getName()}">Название сервиса</h2>
     <ul>
-      <li th:each="servicePrice : ${carService.getServicePrices()}" class="font-size-20">
-        <span th:text="${servicePrice.getServiceType().getName()}"></span>
-        <span th:text="${servicePrice.getPrice()}"></span> рублей
+      <li th:each="carServicePrice : ${carService.getCarServicePrices()}" class="font-size-20">
+        <span th:text="${carServicePrice.getServiceType().getName()}"></span>
+        <span th:text="${carServicePrice.getPrice()}"></span> рублей
       </li>
 
     </ul>
     <div class="font-size-20">Адрес: <span th:text="${carService.getAddress()}">Адрес</span></div>
     <p>Рейтинг</p>
     <div class="carService-row-btn">
-      <a th:href="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${serviceId})}" class="btn btn-primary event-more btn-margin-left">Записаться</a>
+      <a th:href="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServiceId})}" class="btn btn-primary event-more btn-margin-left">Записаться</a>
     </div>
 <!--    -->
     <h2>Отзывы</h2>
-    <div class="review" th:each="review_item : ${carService.getServiceReviews()}">
+    <div class="review" th:each="review_item : ${carService.getReviews()}">
         <div class="review__item-name" th:text="${review_item.getAuthorName()}">Имя человека</div>
         <div class="review__item-text" th:text="${review_item.getText()}">Text</div>
         <div>Оценка:
@@ -82,7 +82,7 @@
     </div>
 <!--    -->
     <h2>Добавить отзыв:</h2>
-    <form th:method="POST" th:action="@{/add-review/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${serviceId})}"
+    <form th:method="POST" th:action="@{/add-review/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServiceId})}"
           th:object="${review}">
 <!--      -->
       <div style="color:red" th:if="${#fields.hasErrors('authorName')}" th:errors="*{authorName}">authorName Error</div>

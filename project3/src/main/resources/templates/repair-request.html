@@ -62,7 +62,7 @@
   <main class="px-3">
 <!--    -->
     <h2>Добавление заявки для типа ремонта: <span th:text="${repairRequest.getServiceType().getName()}"></span></h2>
-    <form th:method="POST" th:action="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${serviceId})}"
+    <form th:method="POST" th:action="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServiceId})}"
           th:object="${repairRequest}">
       <div style="color:red" th:if="${#fields.hasErrors('authorName')}" th:errors="*{authorName}">authorName Error</div>
       <div>

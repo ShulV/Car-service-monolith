@@ -60,18 +60,18 @@
         <div class="container">
             <h2>Список автомастерских</h2>
             <div class="row">
-                <div th:each="servicePrice : ${servicePrices}" class="events-list list-service__row col-md-12">
-                    <a th:href="@{/car-service/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${servicePrice.getService().getId()})}"
+                <div th:each="carServicePrice : ${carServicePrices}" class="events-list list-service__row col-md-12">
+                    <a th:href="@{/car-service/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServicePrice.getCarService().getId()})}"
                        class="list-service__sub-row">
-                        <div th:text="${servicePrice.getService().getName()}">Название сервиса из БД</div>
-                        <div th:text="${servicePrice.getService().getAddress()}">Адрес из БД</div>
+                        <div th:text="${carServicePrice.getCarService().getName()}">Название сервиса из БД</div>
+                        <div th:text="${carServicePrice.getCarService().getAddress()}">Адрес из БД</div>
                         <div>Рейтинг из БД</div>
-                        <div th:text="${servicePrice.getServiceType().getName()}">Адрес из БД</div>
+                        <div th:text="${carServicePrice.getServiceType().getName()}">Адрес из БД</div>
                         <div class="event-price hidden-xs">
-                            <span  th:text="${servicePrice.getPrice()}">50</span> рублей</div>
+                            <span  th:text="${carServicePrice.getPrice()}">50</span> рублей</div>
                     </a>
                     <div>
-                        <a th:href="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${serviceTypeId}, sId=${servicePrice.getService().getId()})}"
+                        <a th:href="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServicePrice.getCarService().getId()})}"
                            class="btn btn-primary event-more">Записаться</a></div>
                 </div>
             </div>
