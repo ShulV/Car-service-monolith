@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @Entity
 @Table(name = "master")
@@ -51,6 +53,12 @@ public class CarService {
 
     public CarService() { }
 
+    public void calcAverageRating() {
+        int ratingSum = reviews.stream().filter(o -> o.getMark() > 0).mapToInt(Review::getMark).sum();
+        double res = (double)ratingSum / reviews.size();
+        this.averageRating = Math.ceil(res * 10) / 10; //Округление до десятых
+
+    }
     public Integer getId() {
         return id;
     }

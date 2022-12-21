@@ -71,7 +71,7 @@
                             <span  th:text="${carServicePrice.getPrice()}">50</span> рублей</div>
                     </a>
                     <div>
-                        <a th:href="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServicePrice.getCarService().getId()})}"
+                        <a th:href="@{/repair-request/add/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServicePrice.getCarService().getId()})}"
                            class="btn btn-primary event-more">Записаться</a></div>
                 </div>
             </div>

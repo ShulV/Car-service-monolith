@@ -70,7 +70,8 @@ body {
   flex-direction: row;
   width: 100%;
   transition: all 1s ease-in;
-  padding-left: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
   color: #CFCFCF;
   font-size: 1.1em;
   text-decoration: none;
@@ -78,7 +79,7 @@ body {
 
 .list-service__sub-row:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-left: 3px solid black;
+  border-left: 3px solid #0d6efd;
   transition: all 0.5s ease-in-out;
   color: #CFCFCF;
   text-decoration: none;

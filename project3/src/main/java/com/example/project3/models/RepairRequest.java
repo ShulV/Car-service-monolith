@@ -21,8 +21,6 @@ public class RepairRequest {
     @Column(name = "phone")
     String phone;
 
-
-
     @Column(name = "date_request")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

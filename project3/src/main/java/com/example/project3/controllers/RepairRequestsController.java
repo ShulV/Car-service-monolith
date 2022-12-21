@@ -7,12 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/repair-request")
 public class RepairRequestsController {
     private final ServiceCarServiceType serviceCarServiceType;
     private final RepairRequestService repairRequestService;
@@ -23,8 +21,11 @@ public class RepairRequestsController {
         this.repairRequestService = repairRequestService;
     }
 
+    //получение страницы со всеми заявками
+//    @GetMapping("")
+
     //получение страницы создания заявки
-    @GetMapping("/add-repair-request/{carServiceId}/{carServiceTypeId}")
+    @GetMapping("/add/{carServiceId}/{carServiceTypeId}")
     public String getPageCreatingRepairRequest(@PathVariable("carServiceId") Integer carServiceId,
                                                @PathVariable("carServiceTypeId") Integer carServiceTypeId,
                                                Model model) {
@@ -36,7 +37,7 @@ public class RepairRequestsController {
 
     }
 
-    @PostMapping("/add-repair-request/{carServiceId}/{carServiceTypeId}")
+    @PostMapping("/add/{carServiceId}/{carServiceTypeId}")
     public String CreateRepairRequest(@PathVariable("carServiceId") Integer carServiceId,
                                       @PathVariable("carServiceTypeId") Integer carServiceTypeId,
                                       @ModelAttribute("repairRequest") RepairRequest repairRequest,

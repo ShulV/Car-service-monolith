@@ -65,9 +65,9 @@
 
     </ul>
     <div class="font-size-20">Адрес: <span th:text="${carService.getAddress()}">Адрес</span></div>
-    <p>Рейтинг</p>
+    <div class="font-size-20">Средний рейтинг: <span th:text="${carService.getAverageRating()}"></span></div>
     <div class="carService-row-btn">
-      <a th:href="@{/add-repair-request/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServiceId})}" class="btn btn-primary event-more btn-margin-left">Записаться</a>
+      <a th:href="@{/repair-request/add/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServiceId})}" class="btn btn-primary event-more btn-margin-left">Записаться</a>
     </div>
 <!--    -->
     <h2>Отзывы</h2>

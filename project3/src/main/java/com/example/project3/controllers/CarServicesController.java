@@ -50,7 +50,7 @@ public class CarServicesController {
                                  @PathVariable("carServiceId") Integer carServiceId,
                                  Model model,
                                  @ModelAttribute(name = "review") Review review) {
-        Optional<CarService> carService = serviceCarService.getServiceById(carServiceId);
+        Optional<CarService> carService = serviceCarService.getServiceByIdWithAverageRating(carServiceId);
 
 
         if(carService.isPresent()) {
