@@ -82,7 +82,7 @@
     </div>
 <!--    -->
     <h2>Добавить отзыв:</h2>
-    <form th:method="POST" th:action="@{/add-review/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServiceId})}"
+    <form th:method="POST" th:action="@{/review/add/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServiceId})}"
           th:object="${review}">
 <!--      -->
       <div style="color:red" th:if="${#fields.hasErrors('authorName')}" th:errors="*{authorName}">authorName Error</div>

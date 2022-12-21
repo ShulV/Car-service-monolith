@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/car-service")
 public class CarServicesController {
     private final ServiceCarService serviceCarService;
     private final ServiceCarServicePrice serviceCarServicePrice;
@@ -33,7 +34,7 @@ public class CarServicesController {
     }
 
     //получение списка автомастерских
-    @GetMapping("/list-services/{carServiceTypeId}")
+    @GetMapping("/all-by-type/{carServiceTypeId}")
     public String getListServicesPage(@PathVariable Integer carServiceTypeId, Model model) {
         CarServiceType carServiceType = serviceCarServiceType.getServiceTypeById(carServiceTypeId);
         if (carServiceType != null) {
@@ -45,7 +46,7 @@ public class CarServicesController {
     }
 
     //получение определенного сервиса
-    @GetMapping("/car-service/{carServiceTypeId}/{carServiceId}")
+    @GetMapping("/{carServiceTypeId}/{carServiceId}")
     public String getServicePage(@PathVariable("carServiceTypeId") Integer carServiceTypeId,
                                  @PathVariable("carServiceId") Integer carServiceId,
                                  Model model,
@@ -58,20 +59,4 @@ public class CarServicesController {
         }
         return "service";
     }
-
-    //добавление отзыва
-    @PostMapping("/add-review/{carServiceTypeId}/{carServiceId}")
-    public String createReview(@PathVariable("carServiceTypeId") Integer carServiceTypeId,
-                               @PathVariable("carServiceId") Integer carServiceId,
-                               @ModelAttribute("review") Review review, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
-            return "service";
-        }
-        reviewService.saveReviewForCarService(carServiceId, review);
-        return "redirect:/car-service/" + carServiceTypeId + '/' + carServiceId;
-    }
-
-
-
-
 }
