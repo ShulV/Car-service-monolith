@@ -52,7 +52,11 @@ public class RepairRequestService {
         }
     }
 
+    public List<RepairRequest> getAll(String colName) {
+        return repairRequestRepository.findAll(Sort.by(Sort.Direction.DESC, colName));
+    }
+
     public List<RepairRequest> getAll() {
-        return repairRequestRepository.findAll(Sort.by(Sort.Direction.DESC, "dateRequest"));
+        return repairRequestRepository.findAll();
     }
 }

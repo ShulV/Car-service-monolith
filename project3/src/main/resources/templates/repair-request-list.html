@@ -51,6 +51,8 @@
                 <div class="col-sm">Тип ремонта</div>
                 <div class="col-sm">Дата записи</div>
                 <div class="col-sm">Дата заявки</div>
+                <div class="col-sm">Статус</div>
+                <div class="col-sm"></div>
 
             </div>
             <div class="row repair-request-row repair-request-row-data" th:each="repairRequest : ${repairRequests}">
@@ -60,7 +62,14 @@
                 <div class="col-sm" th:text="${repairRequest.getServiceType().getName()}">car service type name</div>
                 <div class="col-sm" th:text="${repairRequest.getDateTimeWork()}">date time work</div>
                 <div class="col-sm" th:text="${repairRequest.getDateRequest()}">date request</div>
+                <div class="col-sm" th:text="${repairRequest.getAccepted()}">accepted</div>
+                <button class="col-sm btn btn-primary" type="button">Принять</button>
             </div>
+            <br>
+            <hr>
+            <div id="repair-req-list"></div>
+            <button id="repair-req-btn">Update!</button>
+            <span>lol</span>
         </div>
     </div>
 </main>
@@ -74,7 +83,8 @@
     </div>
 </footer>
 <!---->
-<script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/bootstrap.bundle.min.js" defer></script>
+<script src="../../assets/js/ajax-repair-requests.js" defer></script>
 <!---->
 </body>
 </html>

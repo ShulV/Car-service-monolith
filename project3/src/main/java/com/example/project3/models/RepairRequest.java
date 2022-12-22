@@ -1,6 +1,8 @@
 package com.example.project3.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -9,6 +11,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "request")
+@JsonIgnoreProperties({ "id", "carServiceType", "carService", "serviceType"})
+
 public class RepairRequest {
     @Id
     @Column(name = "id")
@@ -31,8 +35,17 @@ public class RepairRequest {
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp dateTimeWork;
 
+    @Column(name = "accepted")
+    private Boolean isAccepted;
+
     @Transient
     private String dateTimeWorkFromInput;
+
+    @Transient
+    private String serviceName;
+
+    @Transient
+    private String serviceTypeName;
 
     @ManyToOne
     @JoinColumn(name = "type_id", referencedColumnName = "id")
@@ -114,6 +127,38 @@ public class RepairRequest {
 
     public void setDateTimeWorkFromInput(String dateTimeWorkFromInput) {
         this.dateTimeWorkFromInput = dateTimeWorkFromInput;
+    }
+
+    public Boolean getAccepted() {
+        return isAccepted;
+    }
+
+    public void setAccepted(Boolean accepted) {
+        isAccepted = accepted;
+    }
+
+    public CarServiceType getCarServiceType() {
+        return carServiceType;
+    }
+
+    public void setCarServiceType(CarServiceType carServiceType) {
+        this.carServiceType = carServiceType;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public String getServiceTypeName() {
+        return serviceTypeName;
+    }
+
+    public void setServiceTypeName(String serviceTypeName) {
+        this.serviceTypeName = serviceTypeName;
     }
 
     @Override

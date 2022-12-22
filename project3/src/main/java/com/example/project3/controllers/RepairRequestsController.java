@@ -50,7 +50,7 @@ public class RepairRequestsController {
         if(bindingResult.hasErrors()) {
             return "service";
         }
-
+        repairRequest.setAccepted(false);
         repairRequestService.saveRepairRequest(carServiceId, carServiceTypeId, repairRequest);
         return "redirect:/car-service/" + carServiceTypeId + '/' + carServiceId;
     }
