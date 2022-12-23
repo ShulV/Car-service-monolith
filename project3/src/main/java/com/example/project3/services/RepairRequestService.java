@@ -57,6 +57,19 @@ public class RepairRequestService {
     }
 
     public List<RepairRequest> getAll() {
-        return repairRequestRepository.findAll();
+        List<RepairRequest> repairRequests = repairRequestRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+        for (RepairRequest rr : repairRequests) {
+            rr.setServiceName(rr.getCarService().getName());
+            rr.setServiceTypeName(rr.getServiceType().getName());
+        }
+        return repairRequests;
+    }
+
+    @Transactional
+    public void changeStatus(Integer repairReqId) {
+        Optional<RepairRequest> repairRequest = repairRequestRepository.findById(repairReqId);
+        if (repairRequest.isPresent()) {
+            repairRequest.get().setAccepted(!repairRequest.get().getAccepted());
+        }
     }
 }

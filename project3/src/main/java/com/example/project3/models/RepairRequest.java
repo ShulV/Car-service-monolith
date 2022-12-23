@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "request")
-@JsonIgnoreProperties({ "id", "carServiceType", "carService", "serviceType"})
+@JsonIgnoreProperties({"carServiceType", "carService", "serviceType"})
 
 public class RepairRequest {
     @Id

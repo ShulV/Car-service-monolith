@@ -128,3 +128,14 @@ body {
   background: rgba(255, 255, 255, 0.3);
   border-width: 0;
 }
+
+.repair-request-accepted-bg {
+  height: 50px;
+  width: 50px;
+  background-image: url('../images/icons/check-and-cross-mark-symbol.webp');
+  background-size: 200%;
+}
+
+.is-accepted {
+  background-position-x: 100%;
+}

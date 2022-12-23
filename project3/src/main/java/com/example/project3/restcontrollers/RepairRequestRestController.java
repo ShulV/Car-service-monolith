@@ -19,7 +19,13 @@ public class RepairRequestRestController {
 
     @GetMapping("/get-all")
     public List<RepairRequest> getAllRepairRequests() {
-        List<RepairRequest> repairRequests = repairRequestService.getAll();
-        return repairRequests;
+        return repairRequestService.getAll();
+//        return repairRequests;
+    }
+
+    @PostMapping("/accept-request/{repairReqId}")
+    public void acceptRepairRequest(@PathVariable("repairReqId") Integer repairReqId) {
+        System.out.println("POST MAPPING!");
+        repairRequestService.changeStatus(repairReqId);
     }
 }

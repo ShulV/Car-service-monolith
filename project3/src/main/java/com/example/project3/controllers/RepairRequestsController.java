@@ -42,7 +42,7 @@ public class RepairRequestsController {
     }
 
     @PostMapping("/add/{carServiceId}/{carServiceTypeId}")
-    public String CreateRepairRequest(@PathVariable("carServiceId") Integer carServiceId,
+    public String createRepairRequest(@PathVariable("carServiceId") Integer carServiceId,
                                       @PathVariable("carServiceTypeId") Integer carServiceTypeId,
                                       @ModelAttribute("repairRequest") RepairRequest repairRequest,
                                       BindingResult bindingResult) {
@@ -54,4 +54,6 @@ public class RepairRequestsController {
         repairRequestService.saveRepairRequest(carServiceId, carServiceTypeId, repairRequest);
         return "redirect:/car-service/" + carServiceTypeId + '/' + carServiceId;
     }
+
+
 }
