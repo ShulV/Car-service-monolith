@@ -23,9 +23,13 @@
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-dark">Мастерские</h4>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-dark">Авторизация</a></li>
-            <li><a href="#" class="text-dark">Регистрация</a></li>
-            <li><a href="#" class="text-dark">Контакты</a></li>
+            <li><a href="/auth/login" class="text-dark">Авторизация</a></li>
+            <li><a href="/auth/registration" class="text-dark">Регистрация</a></li>
+            <li>
+              <form method="post" th:action="@{/logout}">
+                <input type="submit" value="Выйти">
+              </form>
+            </li>
           </ul>
         </div>
       </div>

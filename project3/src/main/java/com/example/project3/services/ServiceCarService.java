@@ -29,4 +29,8 @@ public class ServiceCarService {
         }
         return carService;
     }
+
+    public Optional<CarService> getCarServiceByEmail(String email) {
+        return carServiceRepository.findByEmail(email);
+    }
 }

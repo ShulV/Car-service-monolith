@@ -1,8 +1,7 @@
 package com.example.project3.models;
 
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -16,10 +15,10 @@ public class CarServiceType {
     @Column(name="name")
     private String name;
 
-    @OneToMany(mappedBy = "carServiceType", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "carServiceType")
     private List<CarServicePrice> carServicePrices;
 
-    @OneToMany(mappedBy = "carServiceType", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "carServiceType")
     private List<RepairRequest> repairRequests;
 
     public CarServiceType() {}

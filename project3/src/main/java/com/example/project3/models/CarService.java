@@ -1,11 +1,10 @@
 package com.example.project3.models;
 
-import jakarta.persistence.*;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+
 
 @Entity
 @Table(name = "master")

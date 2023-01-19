@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly=true)
 public class ServiceCarServiceType {
@@ -18,5 +20,9 @@ public class ServiceCarServiceType {
 
     public CarServiceType getServiceTypeById(Integer id) {
         return carServiceTypeRepository.findById(Long.valueOf(id)).orElse(null);
+    }
+
+    public List<CarServiceType> getServiceTypes() {
+        return carServiceTypeRepository.findAll();
     }
 }

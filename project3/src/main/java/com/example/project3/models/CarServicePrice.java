@@ -1,6 +1,7 @@
 package com.example.project3.models;
 
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "master_type")

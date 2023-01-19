@@ -2,10 +2,10 @@ package com.example.project3.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import jakarta.persistence.*;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
@@ -32,7 +32,6 @@ public class RepairRequest {
 
     @Column(name = "date_time_work")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp dateTimeWork;
 
     @Column(name = "accepted")

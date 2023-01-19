@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Регистрация</title>
+
+  <!--  <link href="css/bootstrap.min.css" rel="stylesheet">-->
+
+<!--  <style>-->
+<!--    .bd-placeholder-img {-->
+<!--      font-size: 1.125rem;-->
+<!--      text-anchor: middle;-->
+<!--      -webkit-user-select: none;-->
+<!--      -moz-user-select: none;-->
+<!--      user-select: none;-->
+<!--    }-->
+<!--    .container {-->
+<!--      max-width: 960px;-->
+<!--    }-->
+
+
+<!--    .header-fixed {-->
+<!--      position: fixed;-->
+<!--      left: 0;-->
+<!--      top: 0;-->
+<!--      z-index: 1000;-->
+<!--      width: 100%;-->
+<!--    }-->
+
+<!--    @media (min-width: 768px) {-->
+<!--      .bd-placeholder-img-lg {-->
+<!--        font-size: 3.5rem;-->
+<!--      }-->
+<!--    }-->
+<!--  </style>-->
+
+
+  <!--  <link href="css/sign_up.css" rel="stylesheet">-->
+</head>
+<header class="header-fixed">
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">О нас</h4>
+          <p class="text-white">Портал автомастерских "Автомастер" предстовляет собой бесплатный ресурс, где автомастерские регистрируются и подписываются на заявки по разным типам услуг (шиномонтаж, замена масла итд). Пользователи, в свою очередь, оставляют заявки и выбирают из предложений наиболее подходящий по различным условиям (цена, время, место расположения, отзывы).</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Мастерские</h4>
+          <ul class="list-unstyled">
+            <li><a href="/auth/login" class="text-dark">Авторизация</a></li>
+            <li><a href="/auth/registration" class="text-dark">Регистрация</a></li>
+            <li>
+              <form method="post" th:action="@{/logout}">
+                <input type="submit" value="Выйти">
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <strong>Автомастер</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation" color="dark">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+<body class="bg-light">
+
+<div class="container">
+  <main>
+    <div class="py-5 mt-5 text-center">
+<!--      <img class="d-block mx-auto mb-4" src="resources/car.png" alt="" width="72" height="57">-->
+      <h2>Регистрация автосервиса</h2>
+      <p class="lead">Зарегистрируйте свою компанию, чтобы Вы могли получать заявки от клиентов по разным типам работ</p>
+    </div>
+
+
+    <div class="px-5 mx-5 text-center">
+      <h4 class="mb-3">Основные данные</h4>
+
+
+      <form class="needs-validation" th:method="POST" th:action="@{/auth/registration}" th:object="${carService}">
+        <div class="row g-3">
+          <!-- ---------------------------------------------------------->
+          <div>
+            <label th:for="name" class="form-label">Название организации</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="" value="" required>
+            <div style="color:red"
+                 th:if="${#fields.hasErrors('name')}"
+                 th:errors="*{name}" class="invalid-feedback">Login Error</div>
+          </div>
+          <!-- ---------------------------------------------------------->
+          <div>
+            <label th:for="email" class="form-label">Email <span class="text-muted"></span></label>
+            <input type="email" class="form-control" id="email" th:field="*{email}"  placeholder="you@example.com">
+            <div style="color:red"
+                 th:if="${#fields.hasErrors('email')}"
+                 th:errors="*{email}" class="invalid-feedback">Email Error</div>
+          </div>
+          <!-- ---------------------------------------------------------->
+          <div>
+            <label th:for="password" class="form-label">Пароль <span class="text-muted"></span></label>
+            <input type="password" class="form-control" id="password" th:field="*{password}"  placeholder="you@example.com">
+            <div style="color:red"
+                 th:if="${#fields.hasErrors('password')}"
+                 th:errors="*{password}" class="invalid-feedback">Password Error</div>
+          </div>
+          <!-- ---------------------------------------------------------->
+          <div>
+            <label th:for="address" class="form-label">Адрес</label>
+            <input type="text" class="form-control" id="address" th:field="*{address}" placeholder="Город, улица, дом" required>
+            <div style="color:red"
+                 th:if="${#fields.hasErrors('address')}"
+                 th:errors="*{address}" class="invalid-feedback">Address Error</div>
+          </div>
+          <!-- ---------------------------------------------------------->
+          <div>
+            <label th:for="phone" class="form-label">Телефон</label>
+            <input type="tel" class="form-control" id="phone" th:field="*{phone}" placeholder="+7_ _ _ _ _ _ _ _ _ _" required>
+            <div style="color:red"
+                 th:if="${#fields.hasErrors('phone')}"
+                 th:errors="*{phone}" class="invalid-feedback">Phone Error</div>
+          </div>
+
+                    <hr class="my-4">
+                    <h4 class="mb-3">Выберите тип ремонта</h4>
+                    <div class="form-check" th:each="csType : ${carServiceTypes}">
+                      <input type="checkbox" class="form-check-input" id="same-address">
+                      <label class="form-check-label" for="same-address"
+                             th:text="${csType.getName()}" th:for="${#ids.prev('features')}"></label>
+                    </div>
+
+
+          <hr class="my-4">
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Зарегистрироваться</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+  <p class="mb-1">&copy; 2022 Автомастер</p>
+  <ul class="list-inline">
+    <li class="list-inline-item"><a href="#">Privacy</a></li>
+    <li class="list-inline-item"><a href="#">Terms</a></li>
+    <li class="list-inline-item"><a href="#">Support</a></li>
+  </ul>
+</footer>
+
+
+
+<!--<script src="js/bootstrap.bundle.min.js"></script>-->
+
+<!--<script src="js/sign_up.js"></script>-->
+</body>
+</html>
