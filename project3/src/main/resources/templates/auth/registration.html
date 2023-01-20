@@ -132,10 +132,16 @@
 
                     <hr class="my-4">
                     <h4 class="mb-3">Выберите тип ремонта</h4>
-                    <div class="form-check" th:each="csType : ${carServiceTypes}">
-                      <input type="checkbox" class="form-check-input" id="same-address">
-                      <label class="form-check-label" for="same-address"
-                             th:text="${csType.getName()}" th:for="${#ids.prev('features')}"></label>
+                    <div class="form-check" th:each="csType, itrStat : ${carServiceTypes}">
+                      <div th:text="${itrStat.index + 1}"></div>
+                      <!-- csType используется как константа в сервисе, не изменять -->
+                      <input type="checkbox"
+                             class="form-check-input"
+                             th:id="|${'csType'}${csType.getId()}|"
+                             th:name="|${'csType'}${csType.getId()}|" >
+                      <label class="form-check-label"
+                             th:text="${csType.getName()}"
+                             th:for="|${'csType'}${csType.getId()}|"></label>
                     </div>
 
 

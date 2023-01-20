@@ -50,7 +50,8 @@ public class CarService {
         this.phone = phone;
     }
 
-    public CarService() { }
+    public CarService() {
+    }
 
     public void calcAverageRating() {
         int ratingSum = reviews.stream().filter(o -> o.getMark() > 0).mapToInt(Review::getMark).sum();

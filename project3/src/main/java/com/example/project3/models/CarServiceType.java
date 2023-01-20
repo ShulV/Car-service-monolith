@@ -15,6 +15,7 @@ public class CarServiceType {
     @Column(name="name")
     private String name;
 
+
     @OneToMany(mappedBy = "carServiceType")
     private List<CarServicePrice> carServicePrices;
 
@@ -58,6 +59,14 @@ public class CarServiceType {
 
     public void setRepairRequests(List<RepairRequest> repairRequests) {
         this.repairRequests = repairRequests;
+    }
+
+    public List<CarServicePrice> getCarServicePrices() {
+        return carServicePrices;
+    }
+
+    public void setCarServicePrices(List<CarServicePrice> carServicePrices) {
+        this.carServicePrices = carServicePrices;
     }
 
     @Override
