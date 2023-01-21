@@ -135,13 +135,26 @@
                     <div class="form-check" th:each="csType, itrStat : ${carServiceTypes}">
                       <div th:text="${itrStat.index + 1}"></div>
                       <!-- csType используется как константа в сервисе, не изменять -->
-                      <input type="checkbox"
-                             class="form-check-input"
-                             th:id="|${'csType'}${csType.getId()}|"
-                             th:name="|${'csType'}${csType.getId()}|" >
-                      <label class="form-check-label"
-                             th:text="${csType.getName()}"
-                             th:for="|${'csType'}${csType.getId()}|"></label>
+                      <div>
+                        <input type="checkbox"
+                               class="form-check-input checkbox-input"
+                               th:id="|${'csType'}${csType.getId()}|"
+                               th:name="|${'csType'}${csType.getId()}|">
+<!--                               -->
+
+                        <label class="form-check-label"
+                               th:text="${csType.getName()}"
+                               th:for="|${'csType'}${csType.getId()}|"></label>
+                      </div>
+                      <div th:id=|${'priceBlock'}${csType.getId()}| style="display: none">
+                        <label class="form-check-label"
+                               th:for="|${'csPrice'}${csType.getId()}|">Цена: </label>
+                        <input type="number"
+                               class="form-check-input"
+                               th:id=|${'csPrice'}${csType.getId()}|
+                               th:name="|${'csPrice'}${csType.getId()}|">
+                      </div>
+
                     </div>
 
 
@@ -168,5 +181,24 @@
 <!--<script src="js/bootstrap.bundle.min.js"></script>-->
 
 <!--<script src="js/sign_up.js"></script>-->
+
+<script>
+  let checkboxes = document.getElementsByClassName('checkbox-input');
+
+  [].forEach.call(checkboxes, function(checkbox) {
+    let nameAttr = checkbox.name;
+    nameAttr = nameAttr.replace('csType', '');
+    checkbox.addEventListener('click', function() { hideCheckboxBlock('priceBlock' + nameAttr)});
+  });
+
+  function hideCheckboxBlock(blockId) {
+    let block = document.getElementById(blockId);
+    if (block.style.display === 'none')
+      block.style.display='block';
+    else {
+      block.style.display='none';
+    }
+  }
+</script>
 </body>
 </html>

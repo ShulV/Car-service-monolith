@@ -19,11 +19,11 @@ public class ServiceCarService {
     }
 
     public Optional<CarService> getServiceById(Integer id) {
-        return carServiceRepository.findById(Long.valueOf(id));
+        return carServiceRepository.findById(id);
     }
 
     public Optional<CarService> getServiceByIdWithAverageRating(Integer id) {
-        Optional<CarService> carService = carServiceRepository.findById(Long.valueOf(id));
+        Optional<CarService> carService = carServiceRepository.findById(id);
         if(carService.isPresent()) {
             carService.get().calcAverageRating();
         }

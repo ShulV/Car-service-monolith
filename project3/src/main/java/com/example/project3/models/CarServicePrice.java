@@ -61,6 +61,14 @@ public class CarServicePrice {
         this.carService = carService;
     }
 
+    public CarServiceType getCarServiceType() {
+        return carServiceType;
+    }
+
+    public void setCarServiceType(CarServiceType carServiceType) {
+        this.carServiceType = carServiceType;
+    }
+
     @Override
     public String toString() {
         return "CarServicePrice{" +
