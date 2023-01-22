@@ -51,13 +51,16 @@
           <div sec:authorize="!isAuthenticated()">
             <ul class="list-unstyled text-light">
               <li><a href="/auth/login" class="btn btn-light mt-2">Авторизация</a></li>
+              <li sec:authorize="hasAnyRole('ADMIN', 'USER')">
+                <a href="/repair-request/all" class="btn btn-light mt-2">Просмотр заявок</a>
+              </li>
             </ul>
           </div>
           <div sec:authorize="isAuthenticated()">
             <ul class="list-unstyled text-light">
               <li>
                 <form method="post" th:action="@{/logout}">
-                  <div  class="text-dark mt-2">Email: <span sec:authentication="name"></span></div>
+                  <div  class="text-light mt-2">Email: <span sec:authentication="name"></span></div>
                   <input class="btn btn-danger mt-2" type="submit" value="Выйти">
                 </form>
               </li>

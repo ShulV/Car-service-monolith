@@ -86,7 +86,12 @@
                     </a>
                     <div>
                         <a th:href="@{/repair-request/add/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServicePrice.getCarService().getId()})}"
-                           class="btn btn-primary event-more">Записаться</a>
+                           class="btn btn-success event-more">Записаться</a>
+                    </div>
+                    <div sec:authorize="hasRole('ADMIN')">
+                        <form th:method="PATCH" action="">
+                            <input type="submit" class="btn btn-primary event-more" value="Редактировать" />
+                        </form>
                     </div>
                     <div sec:authorize="hasRole('ADMIN')">
                         <form th:method="DELETE" th:action="@{/car-service/delete/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServicePrice.getCarService().getId()})}">
@@ -95,9 +100,7 @@
                     </div>
                 </div>
             </div>
-            <div class="py-4">
-                <a href="#" class="btn btn-primary event-more redac">Редактировать</a>
-            </div>
+
         </div>
     </div>
 </main>

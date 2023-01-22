@@ -40,7 +40,7 @@
             <img class="mb-4" src="../../assets/images/car.png" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Авторизация</h1>
 
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+<!--            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
 
             <div th:if="${param.error}" class="form-group" style="color: red">
                 Неправильные логин или пароль

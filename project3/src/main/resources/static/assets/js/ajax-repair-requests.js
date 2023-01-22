@@ -45,7 +45,7 @@ function generateRepairRequestsContainers(repairRequests) {
                 <div class="col-sm">${repairReq.dateTimeWork}</div>
                 <div class="col-sm">${repairReq.dateRequest}</div>
                 <div class="col-sm "><div class="repair-request-accepted-bg ${isAcceptedClass}"></div></div>
-                <button class="col-sm btn btn-primary accept-request-btn" type="submit" data-id="${repairReq.id}">Принять</button>
+                <button class="col-sm btn btn-primary accept-request-btn" type="submit" data-id="${repairReq.id}">Изменить статус</button>
             </div>`
         div.insertAdjacentHTML('beforeend', html);
         repairReqList.appendChild(div);

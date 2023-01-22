@@ -29,9 +29,16 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 //кастомная форма аутентификации
+                .csrf().disable().cors()
+                .and()
                 .authorizeRequests()
                 .antMatchers("/repair-request/all").hasRole("ADMIN")
-                .antMatchers("/", "/auth/login", "/auth/registration", "/error", "/assets/**").permitAll()
+                .antMatchers("/",
+                        "/auth/login",
+                        "/auth/registration",
+                        "/error",
+                        "/api/**",
+                        "/assets/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
