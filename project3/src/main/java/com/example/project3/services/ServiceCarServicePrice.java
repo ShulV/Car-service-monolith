@@ -1,5 +1,6 @@
 package com.example.project3.services;
 
+import com.example.project3.models.CarService;
 import com.example.project3.models.CarServicePrice;
 import com.example.project3.repositories.CarServicePriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,10 @@ public class ServiceCarServicePrice {
 
     public Optional<CarServicePrice> findById(Integer id) {
         return carServicePriceRepository.findById(id);
+    }
+
+    @Transactional
+    public void deleteAllWithCarServiceId(CarService carService) {
+        carServicePriceRepository.deleteByCarService(carService);
     }
 }

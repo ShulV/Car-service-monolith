@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -29,8 +30,10 @@ public class SecurityConfig {
         return http
                 //кастомная форма аутентификации
                 .authorizeRequests()
-                .antMatchers("/auth/login", "/auth/registration", "/error").permitAll()
+                .antMatchers("/repair-request/all").hasRole("ADMIN")
+                .antMatchers("/", "/auth/login", "/auth/registration", "/error", "/assets/**").permitAll()
                 .anyRequest().authenticated()
+
                 .and()
 
                 .formLogin().loginPage("/auth/login")

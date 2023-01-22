@@ -2,9 +2,11 @@ package com.example.project3.models;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 
 public class SecurityUser implements UserDetails {
 
@@ -17,7 +19,8 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+
+        return Collections.singletonList(new SimpleGrantedAuthority(carService.getRole()));
     }
 
     @Override
@@ -48,5 +51,9 @@ public class SecurityUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public CarService getCarService() {
+        return carService;
     }
 }

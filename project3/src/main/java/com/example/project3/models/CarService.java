@@ -15,19 +15,22 @@ public class CarService {
     private Integer id;
 
     @Column(name = "name")
-    String name;
+    private String name;
 
     @Column(name = "email")
-    String email;
+    private String email;
 
     @Column(name = "password")
-    String password;
+    private String password;
 
     @Column(name = "address")
-    String address;
+    private String address;
 
     @Column(name = "phone")
-    String phone;
+    private String phone;
+
+    @Column(name = "role")
+    private String role;
 
     @Transient
     private Double averageRating;
@@ -144,6 +147,14 @@ public class CarService {
 
     public void setAverageRating(Double averageRating) {
         this.averageRating = averageRating;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override

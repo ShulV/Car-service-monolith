@@ -53,6 +53,7 @@ public class RegistrationService {
     public void register(CarService carService, Map<String, String> allReqParams) {
         String encodedPassword = passwordEncoder.encode(carService.getPassword());
         carService.setPassword(encodedPassword);
+        carService.setRole("ROLE_USER");
 
         Map<Integer, Integer> typeIdPriceHashMap = getPairsOfCarServiceTypeAndPrice(allReqParams);
         for (Map.Entry<Integer, Integer> typeIdPrice: typeIdPriceHashMap.entrySet()
@@ -67,7 +68,6 @@ public class RegistrationService {
                 serviceCarServicePrice.save(carServicePrice);
             }
             //TODO лучше сохранять пакетом
-
         }
         carServiceRepository.save(carService);
     }

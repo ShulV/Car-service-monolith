@@ -54,6 +54,4 @@ public class RepairRequestsController {
         repairRequestService.saveRepairRequest(carServiceId, carServiceTypeId, repairRequest);
         return "redirect:/car-service/" + carServiceTypeId + '/' + carServiceId;
     }
-
-
 }

@@ -1,4 +1,8 @@
 
+ul, li {
+  list-style: none;
+}
+
 .header-fixed {
 	position: fixed;
 	left: 0;

@@ -6,6 +6,7 @@ import com.example.project3.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -57,5 +58,18 @@ public class CarServicesController {
             model.addAttribute("carService", carService.get());
         }
         return "service";
+    }
+
+    @DeleteMapping("/delete/{carServiceTypeId}/{carServiceId}")
+    public String deleteRepairRequest(@PathVariable("carServiceId") Integer carServiceId,
+                                      @PathVariable("carServiceTypeId") Integer carServiceTypeId) {
+
+        Optional<CarService> carService = serviceCarService.getServiceById(carServiceId);
+        if (carService.isPresent()) {
+            serviceCarServicePrice.deleteAllWithCarServiceId(carService.get());
+            serviceCarService.deleteById(carServiceId);
+        }
+
+        return "redirect:/car-service/all-by-type/" + carServiceTypeId;
     }
 }

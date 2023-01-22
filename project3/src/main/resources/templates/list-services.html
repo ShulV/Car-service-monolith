@@ -1,5 +1,7 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,11 +35,23 @@
                 </div>
                 <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-dark">Мастерские</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-dark">Авторизация</a></li>
-                        <li><a href="#" class="text-dark">Регистрация</a></li>
-                        <li><a href="#" class="text-dark">Контакты</a></li>
-                    </ul>
+                    <div sec:authorize="!isAuthenticated()">
+                        <ul class="list-unstyled">
+                            <li><a href="/auth/login" class="btn btn-light mt-2">Авторизация</a></li>
+                            <li><a href="/auth/registration" class="btn btn-primary mt-2">Регистрация</a></li>
+                        </ul>
+                    </div>
+                    <div sec:authorize="isAuthenticated()">
+                        <ul class="list-unstyled">
+                            <li>
+                                <form method="post" th:action="@{/logout}">
+                                    <div  class="text-dark mt-2">Email: <span sec:authentication="name"></span></div>
+                                    <input class="btn btn-danger mt-2" type="submit" value="Выйти">
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -72,7 +86,13 @@
                     </a>
                     <div>
                         <a th:href="@{/repair-request/add/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServicePrice.getCarService().getId()})}"
-                           class="btn btn-primary event-more">Записаться</a></div>
+                           class="btn btn-primary event-more">Записаться</a>
+                    </div>
+                    <div sec:authorize="hasRole('ADMIN')">
+                        <form th:method="DELETE" th:action="@{/car-service/delete/{sTypeId}/{sId}(sTypeId=${carServiceTypeId}, sId=${carServicePrice.getCarService().getId()})}">
+                            <input type="submit" class="btn btn-danger event-more" value="Удалить"/>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="py-4">

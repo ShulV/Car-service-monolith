@@ -33,4 +33,9 @@ public class ServiceCarService {
     public Optional<CarService> getCarServiceByEmail(String email) {
         return carServiceRepository.findByEmail(email);
     }
+
+    @Transactional
+    public void deleteById(Integer carServiceId) {
+        carServiceRepository.deleteById(carServiceId);
+    }
 }
